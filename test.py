@@ -1,24 +1,24 @@
 from discrete import *
 
-#GCD tests
-if not GCD(48, 18) == 6:
-    print("Error in GCD function for inputs 48 and 18")
-if not GCD(101, 10) == 1:
-    print("Error in GCD function for inputs 101 and 10")
-if not GCD(270270, 18) == 18:
-    print("Error in GCD function for inputs 270270 and 18")
-if not GCD(705705, 18) == 3:
-    print("Error in GCD function for inputs 705705 and 18")
+#gcd tests
+if not gcd(48, 18) == 6:
+    print("Error in gcd function for inputs 48 and 18")
+if not gcd(101, 10) == 1:
+    print("Error in gcd function for inputs 101 and 10")
+if not gcd(270270, 18) == 18:
+    print("Error in gcd function for inputs 270270 and 18")
+if not gcd(705705, 18) == 3:
+    print("Error in gcd function for inputs 705705 and 18")
 
-#GCD_bezout tests
-if not GCD_bezout(48, 18) == (6, -1, 3):
-    print("Error in GCD_bezout function for inputs 48 and 18")
-if not GCD_bezout(101, 10) == (1, 1, -10):
-    print("Error in GCD_bezout function for inputs 101 and 10")
-if not GCD_bezout(270270, 18) == (18, 0, 1):
-    print("Error in GCD_bezout function for inputs 270270 and 18")
-if not GCD_bezout(705705, 18) == (3, -1, 39206):
-    print("Error in GCD_bezout function for inputs 705705 and 18")
+#gcd_bezout tests
+if not gcd_bezout(48, 18) == (6, -1, 3):
+    print("Error in gcd_bezout function for inputs 48 and 18")
+if not gcd_bezout(101, 10) == (1, 1, -10):
+    print("Error in gcd_bezout function for inputs 101 and 10")
+if not gcd_bezout(270270, 18) == (18, 0, 1):
+    print("Error in gcd_bezout function for inputs 270270 and 18")
+if not gcd_bezout(705705, 18) == (3, -1, 39206):
+    print("Error in gcd_bezout function for inputs 705705 and 18")
 
 # isCoprime tests
 if isCoprime(48, 18) != False:

@@ -6,7 +6,7 @@ class GraphProperties(TypedDict, total=False):
     degree: list[int]
     error: str
 
-def GCD(num1: int, num2: int) -> int:
+def gcd(num1: int, num2: int) -> int:
     """Compute the Greatest Common Divisor (GCD) of two integers using the Euclidean algorithm.
 
     Args:
@@ -20,7 +20,7 @@ def GCD(num1: int, num2: int) -> int:
         num1, num2 = num2, num1 % num2
     return abs(num1)
 
-def GCD_bezout(num1: int, num2: int) -> tuple[int, int, int]:
+def gcd_bezout(num1: int, num2: int) -> tuple[int, int, int]:
     """Compute the GCD of two integers and the coefficients for Bézout's identity.
 
     Args:
@@ -53,7 +53,7 @@ def isCoprime(num1: int, num2: int) -> bool:
     Returns:
         bool: True if the integers are coprime, False otherwise.
     """
-    return GCD(num1, num2) == 1
+    return gcd(num1, num2) == 1
 
 def graphProperties(n: int, graph_type: str) -> GraphProperties:
     """Return properties of an n-graph based on its type.
