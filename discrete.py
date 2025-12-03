@@ -1,4 +1,5 @@
 from typing import TypedDict
+from math import sqrt, floor
 
 class GraphProperties(TypedDict, total=False):
     vertices: int
@@ -190,6 +191,118 @@ def derange(n: int) -> int:
             derangements[i] = (i - 1) * (derangements[i - 1] + derangements[i - 2])
         return derangements[n]
 
+def primesUnder(n: int) -> list[int]:
+    """Return a list of all prime numbers less than or equal to n using the Sieve of Eratosthenes.
 
+    Args:
+        n (int): The upper limit.
+    Returns:
+        list[int]: A list of prime numbers less than or equal to n.
+    """
+    
+    sqrt_n: int = floor(sqrt(n))
+    
+    sieve = [True] * n
+    if n > 0:
+        sieve[0] = False
+    if n > 1:
+        sieve[1] = False  # 0 and 1 are not prime numbers
+    for i in range(2, int(sqrt_n) + 1):
+        if sieve[i]:
+            for j in range(i * i, n, i):
+                sieve[j] = False
+    return [i for i in range(n) if sieve[i]]
 
+def isPrime(n: int) -> bool:
+    """Check if a number is prime.
 
+    Args:
+        n (int): The number to check.
+    Returns:
+        bool: True if the number is prime, False otherwise.
+    """
+    if n <= 1:
+        return False
+    for i in range(2, floor(sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def pigeonHole(items: int, boxes: int) -> int:
+    """Calculate the minimum number of items that must be in at least one box using the pigeonhole principle.
+
+    Args:
+        items (int): The total number of items.
+        boxes (int): The total number of boxes.
+
+    Returns:
+        int: The minimum number of items in at least one box.
+    """
+    if boxes <= 0:
+        raise ValueError("Number of boxes must be greater than zero.")
+    return (items + boxes - 1) // boxes  # Equivalent to ceil(items / boxes)
+
+def pigeonHoleReverse(noMoreThan: int, boxes: int) -> int:
+    """Calculate the maximum number of items that can be placed in boxes without exceeding a specified limit in any box.
+
+    Args:
+        noMoreThan (int): The maximum number of items allowed in any box.
+        boxes (int): The total number of boxes.
+
+    Returns:
+        int: The maximum number of items that can be placed in the boxes.
+    """
+    if noMoreThan < 0:
+        raise ValueError("The maximum number of items per box must be non-negative.")
+    if boxes < 0:
+        raise ValueError("The number of boxes must be non-negative.")
+    return noMoreThan * boxes
+
+def chineseRemainder(the_moduli: list[int], the_remainders: list[int]) -> tuple[int, int]:
+    """Solve a system of simultaneous congruences using the Chinese Remainder Theorem.
+
+    Args:
+        the_moduli (list[int]): A list of pairwise coprime moduli.
+        the_remainders (list[int]): A list of remainders corresponding to each modulus.
+
+    Returns:
+        tuple[int, int]: A tuple containing the solution and the product of the moduli.
+        [solution, product_of_moduli]
+    """
+    for modulus in the_moduli:
+        if modulus <= 0:
+            raise ValueError("Moduli must be positive integers.")
+    if len(the_moduli) != len(the_remainders):
+        raise ValueError("The number of moduli must equal the number of remainders.")
+    
+    
+    prod = 1
+    for modulus in the_moduli:
+        prod *= modulus
+
+    result = 0
+    for modulus, remainder in zip(the_moduli, the_remainders):
+        partial_prod = prod // modulus
+        gcd_value, inverse, _ = gcd_bezout(partial_prod, modulus)
+        if gcd_value != 1:
+            raise ValueError("Moduli must be pairwise coprime.")
+        result += remainder * inverse * partial_prod
+
+    return result % prod, prod
+
+def permutation(n: int, k: int) -> int:
+    """Calculate the number of permutations of n items taken k at a time.
+
+    Args:
+        n (int): The total number of items.
+        k (int): The number of items to arrange.
+
+    Returns:
+        int: The number of permutations.
+    """
+    if k < 0 or k > n:
+        return 0
+    result = 1
+    for i in range(k):
+        result *= n - i
+    return result

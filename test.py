@@ -71,3 +71,65 @@ if not derange(-45) == -1:
 if not derange(29) == 3252702461227859257745914274516:
     print("Error in derangement function for input 29")
     
+
+# Primes under tests
+if not primesUnder(10) == [2, 3, 5, 7]:
+    print("Error in primesUnder function for input 10")
+if not primesUnder(30) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]:
+    print("Error in primesUnder function for input 30")
+if not primesUnder(1) == []:
+    print("Error in primesUnder function for input 1")
+if not primesUnder(50) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]:
+    print("Error in primesUnder function for input 50")
+
+# isPrime tests
+if not isPrime(29) == True:
+    print("Error in isPrime function for input 29")
+if not isPrime(100) == False:
+    print("Error in isPrime function for input 100")
+if not isPrime(1) == False:
+    print("Error in isPrime function for input 1")
+if not isPrime(2) == True:
+    print("Error in isPrime function for input 2")
+if not isPrime(7793) == True:
+    print("Error in isPrime function for input 7793")
+if not isPrime(8000) == False:
+    print("Error in isPrime function for input 8000")
+
+# Pigeonhole tests
+if not pigeonHole(10, 3) == 4:
+    print("Error in pigeonhole function for inputs 10 and 3")
+if not pigeonHole(100, 9) == 12:
+    print("Error in pigeonhole function for inputs 100 and 9")
+if not pigeonHole(1, 1) == 1:
+    print("Error in pigeonhole function for inputs 1 and 1")
+if not pigeonHole(0, 5) == 0:
+    print("Error in pigeonhole function for inputs 0 and 5")
+
+# pigeonHoleReverse tests
+if not pigeonHoleReverse(10, 3) == 30:
+    print("Error in pigeonHoleReverse function for inputs 10 and 3")
+if not pigeonHoleReverse(100, 9) == 900:
+    print("Error in pigeonHoleReverse function for inputs 100 and 9")
+if not pigeonHoleReverse(1, 1) == 1:
+    print("Error in pigeonHoleReverse function for inputs 1 and 1")
+
+# chineseRemainder tests
+if not chineseRemainder([3, 5, 7], [2, 3, 2]) == (23, 105):
+    print("Error in chineseRemainder function for inputs [3, 5, 7] and [2, 3, 2]")
+if not chineseRemainder([4, 9], [3, 8]) == (35, 36):
+    print("Error in chineseRemainder function for inputs [4, 9] and [3, 8]")
+try:
+    _ = chineseRemainder([6, 10, 15], [5, 3, 1])
+    print("Error in chineseRemainder function for inputs [6, 10, 15] and [5, 3, 1]")
+except ValueError:
+    pass  # Expected
+
+# permutation tests
+if not permutation(5, 2) == 20:
+    print("Error in permutation function for inputs 5 and 2")
+if not permutation(3, 2) == 6:
+    print("Error in permutation function for inputs 3 and 2")
+if not permutation(1, 1) == 1:
+    print("Error in permutation function for inputs 1 and 1")
+    
